@@ -1,0 +1,81 @@
+/* Done Expolratory Data Analysis of a traffic Accident prediction dataset  */
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv('Traffic accident prediction.csv')
+print(df.head())
+df.info()
+print(df.describe())
+print(df.isnull().sum())
+plt.figure(figsize=(8, 6))
+sns.histplot(df['Driver_Age'], kde=True, bins=20)
+plt.title('Distribution of Driver Age')
+plt.xlabel('Driver Age')
+plt.ylabel('Frequency')
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.histplot(df['Driver_Experience'], kde=True, bins=20)
+plt.title('Distribution of Driver Experience')
+plt.xlabel('Driver Experience (years)')
+plt.ylabel('Frequency')
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.countplot(x='Weather', data=df)
+plt.title('Distribution of Weather Conditions')
+plt.xticks(rotation=45)
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.countplot(x='Road_Type', data=df)
+plt.title('Distribution of Road Types')
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.countplot(x='Weather', hue='Accident_Severity', data=df)
+plt.title('Accident Severity vs Weather')
+plt.xticks(rotation=45)
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.countplot(x='Vehicle_Type', hue='Accident_Severity', data=df)
+plt.title('Accident Severity vs Vehicle Type')
+plt.xticks(rotation=45)
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='Speed_Limit', y='Number_of_Vehicles', data=df)
+plt.title('Speed_Limit vs Number_of_Vehicles')
+plt.xlabel('Spped limit')
+plt.ylabel('Number of vehicles')
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.boxplot(x='Accident_Severity', y='Driver_Age', data=df)
+plt.title('Driver Age vs Accident Severity')
+plt.show()
+corr = df[['Driver_Age', 'Driver_Experience', 'Number_of_Vehicles', 'Traffic_Density', 'Speed_Limit']].corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+plt.title('Correlation Matrix of Numerical Features')
+plt.show()
+plt.figure(figsize=(8, 6))
+sns.boxplot(x='Driver_Age', data=df)
+plt.title('Outliers in Driver Age')
+plt.show()
+sns.pairplot(df[['Driver_Age', 'Driver_Experience', 'Speed_Limit', 'Number_of_Vehicles', 'Accident_Severity']], hue='Accident_Severity')
+plt.show()
+age_bins = [0, 30, 50, 100]  # Age ranges for Young, Middle-Aged, and Senior
+age_labels = ['Young', 'Middle-Aged', 'Senior']  # Labels for the age categories
+df['Age_Group'] = pd.cut(df['Driver_Age'], bins=age_bins, labels=age_labels, right=False)
+print(df['Age_Group'].value_counts())
+traffic_density_bins = [0, 1, 2, np.inf]  # Low: 0-5, Medium: 6-15, High: 15+
+traffic_density_labels = ['Low', 'Medium', 'High']  # Labels for traffic density
+df['Traffic_Density_Category'] = pd.cut(df['Traffic_Density'], bins=traffic_density_bins, labels=traffic_density_labels, right=False)
+print(df.head())
+print(df['Traffic_Density_Category'].value_counts())
+experience_bins = [0, 10, 40, np.inf]  # Experience ranges
+experience_labels = ['Novice', 'Experienced', 'Veteran']
+df['Driver_Experience_Group'] = pd.cut(df['Driver_Experience'], bins=experience_bins, labels=experience_labels, right=False) # Adding 1 to avoid division by zero
+print(df['Driver_Experience_Group'].value_counts())
+Accident_status_bins = [0, 1, np.inf]  # Experience ranges
+Accident_status_labels = ['Not occured', 'occured']
+df['Accident_status'] = pd.cut(df['Accident'], bins=Accident_status_bins, labels=Accident_status_labels, right=False) # Adding 1 to avoid division by zero
+print(df['Accident_status'].value_counts())
+
+
