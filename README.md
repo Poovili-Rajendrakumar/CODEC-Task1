@@ -20,3 +20,22 @@ TECHNOLOGIES USED
 2. NumPy
 3. Matplotlib
 4. Seaborn
+![TRAFFIC ACCIDENT DATA VISUALIZATION](https://github.com/user-attachments/assets/68f7d8ae-d2c6-42bb-85ff-7ddb5c992dd2)
+![image](https://github.com/user-attachments/assets/7bc06b92-e3e0-4a59-b3a3-dabb075dd705)
+![image](https://github.com/user-attachments/assets/d06b62ad-ccb6-420d-bc1c-8968cec267a1)
+![image](https://github.com/user-attachments/assets/55ae3d74-e9d2-465f-a683-be3397ff2cd7)
+![image](https://github.com/user-attachments/assets/fdb9a55a-b81c-40bb-82d7-4077d9976bb2)
+![image](https://github.com/user-attachments/assets/fd51cf9a-a802-4f9b-812d-f6584595aac6)
+![image](https://github.com/user-attachments/assets/452bae2d-6764-4e8b-9e14-bbac6ff0532f)
+![image](https://github.com/user-attachments/assets/4a11d6c4-545e-4924-a935-75f678712d7e)
+
+
+
+
+
+
+
+
+
+
+
